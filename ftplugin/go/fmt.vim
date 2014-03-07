@@ -59,7 +59,11 @@ function! s:GoFormat()
         if !empty(errors)
             call setqflist(errors, 'r')
         endif
-        echohl Error | echomsg "Gofmt returned error" | echohl None
+        " echohl Error | echomsg "Gofmt returned error" | echohl None
+        botright copen
+        exe "redraw!"
+    else
+        cclose
     endif
     call winrestview(view)
 endfunction
